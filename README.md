@@ -49,5 +49,4 @@ An intelligent web-based expense tracking application built using **Python Flask
 
 ## ▶️ How to Run
 
-```bash
 python app.py
