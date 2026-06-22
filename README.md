@@ -68,7 +68,7 @@ python app.py
 1. Add Expense
 2. View Expenses
 3. Advice
-4. Logout
+4. Log out
 
 Enter your choice: 1
 
