@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>👤 User Profile</h1>
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ user_name }}</td>
+                </tr>
+
+                <tr>
+                    <th>Email</th>
+                    <td>{{ user_email }}</td>
+                </tr>
+
+                <tr>
+                    <th>Monthly Budget</th>
+                    <td>₹ {{ monthly_budget }}</td>
+                </tr>
+
+                <tr>
+                    <th>Savings Target</th>
+                    <td>₹ {{ savings_target }}</td>
+                </tr>
+            </table>
+
+            <br>
+
+            <div style="text-align:center;">
+                <a href="/">⬅ Back to Dashboard</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

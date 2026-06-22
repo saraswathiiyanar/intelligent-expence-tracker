@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="card">
+            <h1>💰 Intelligent Expense Tracker</h1>
+            <p style="text-align:center;">
+                Track your expenses and get smart financial advice.
+            </p>
+
+            <div style="text-align:center; margin-top:20px;">
+                <a href="/add">
+                    <button>Add Expense</button>
+                </a>
+
+                <a href="/advice">
+                    <button>Financial Advice</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Total Expense</h2>
+            <p class="total-expense">
+                ₹ {{ total_expense }}
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Expense History</h2>
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+
+                {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense[0] }}</td>
+                    <td>{{ expense[1] }}</td>
+                    <td>₹ {{ expense[2] }}</td>
+                    <td>{{ expense[3] }}</td>
+                    <td>
+                        <a href="/delete/{{ expense[0] }}"
+                           onclick="return confirmDelete();">
+                           Delete
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

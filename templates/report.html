@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Reports</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="card">
+            <h1>📊 Expense Reports</h1>
+
+            <h2>Summary</h2>
+
+            <p><strong>Total Expenses:</strong> ₹ {{ total_expense }}</p>
+            <p><strong>Total Transactions:</strong> {{ total_transactions }}</p>
+        </div>
+
+        <div class="card">
+
+            <h2>Expense Records</h2>
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+
+                {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense[0] }}</td>
+                    <td>{{ expense[1] }}</td>
+                    <td>₹ {{ expense[2] }}</td>
+                    <td>{{ expense[3] }}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Financial Report</h2>
+
+            <ul>
+                <li>Total Spending Analysis</li>
+                <li>Monthly Expense Tracking</li>
+                <li>Category-wise Expense Monitoring</li>
+                <li>Budget Management Insights</li>
+            </ul>
+
+        </div>
+
+        <div style="text-align:center;">
+            <a href="/">⬅ Back to Dashboard</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

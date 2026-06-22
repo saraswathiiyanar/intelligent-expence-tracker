@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Advice</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="card">
+            <h1>💡 Financial Advisory System</h1>
+
+            <div class="advice-box">
+                {{ advice }}
+            </div>
+
+            <br>
+
+            <h2>Smart Tips</h2>
+
+            <ul>
+                <li>Track your expenses regularly.</li>
+                <li>Create a monthly budget.</li>
+                <li>Avoid unnecessary spending.</li>
+                <li>Save at least 20% of your income.</li>
+                <li>Review your expenses every month.</li>
+            </ul>
+
+            <br>
+
+            <div style="text-align:center;">
+                <a href="/">⬅ Back to Dashboard</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense History</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#667eea,#764ba2);
+            margin:0;
+            padding:0;
+        }
+
+        .container{
+            width:80%;
+            margin:40px auto;
+            background:white;
+            padding:25px;
+            border-radius:15px;
+            box-shadow:0 0 20px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+            color:#4a148c;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:20px;
+        }
+
+        th{
+            background:#4a148c;
+            color:white;
+            padding:12px;
+        }
+
+        td{
+            padding:10px;
+            text-align:center;
+            border-bottom:1px solid #ddd;
+        }
+
+        tr:hover{
+            background:#f3e5f5;
+        }
+
+        .btn{
+            display:block;
+            width:220px;
+            margin:20px auto;
+            text-align:center;
+            text-decoration:none;
+            background:#4a148c;
+            color:white;
+            padding:12px;
+            border-radius:8px;
+        }
+
+        .btn:hover{
+            background:#6a1b9a;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>📋 Expense History</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Amount (₹)</th>
+            <th>Date</th>
+        </tr>
+
+        {% for e in expenses %}
+        <tr>
+            <td>{{ e[0] }}</td>
+            <td>{{ e[1] }}</td>
+            <td>{{ e[2] }}</td>
+            <td>{{ e[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/dashboard" class="btn">⬅ Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>
