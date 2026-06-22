@@ -51,8 +51,3 @@ An intelligent web-based expense tracking application built using **Python Flask
 
 ```bash
 python app.py
-
----
-
- ## Developed by
-Saraswathi I
