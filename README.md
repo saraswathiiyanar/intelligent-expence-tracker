@@ -52,10 +52,10 @@ An intelligent web-based expense tracking application built using **Python Flask
 1. Install Python on your system  
 2. Open terminal / command prompt  
 3. Navigate to the project folder  
-4. Install required dependencies:
+4. Run the command:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirement.txt
 
 ```bash
 python app.py
@@ -79,5 +79,5 @@ Enter Amount: 250
 
 ---
 
-## 👨‍💻** Author** 
+👨‍💻 Author
 Saraswathi I
