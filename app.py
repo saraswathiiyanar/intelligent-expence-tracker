@@ -34,7 +34,10 @@ def logout():
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    return render_template(
+        'profile.html',
+        username=session['user']
+    )
 
 
 # ---------------- DASHBOARD ----------------
@@ -52,6 +55,29 @@ def dashboard():
         cursor.execute("SELECT * FROM expenses")
         expenses = cursor.fetchall()
 
+        cursor.execute("SELECT SUM(amount) FROM expenses")
+        total_expense = cursor.fetchone()[0] or 0
+        
+        if total_expense > 5000:
+            advice = "Reduce unnecessary spending."
+        else:
+            advice = "Good financial management."
+        
+        cursor.execute("""
+        SELECT category, SUM(amount)
+        FROM expenses
+        GROUP BY category
+        """)
+        analysis = cursor.fetchall()
+    
+        cursor.execute("""
+        SELECT substr(date,1,7) as month,
+        SUM(amount)
+        FROM expenses
+        GROUP BY month
+        """)
+        report = cursor.fetchall()
+    
         conn.close()
 
         return render_template("dashboard.html", expenses=expenses)
@@ -95,10 +121,40 @@ def view_expenses():
 
     cursor.execute("SELECT * FROM expenses")
     expenses = cursor.fetchall()
+    
+    return render_template("view_expenses.html", expenses=expenses)
+    
+@app.route('/search', methods=['POST'])
+def search():
+    category = request.form['category']
+
+    conn = sqlite3.connect("expense.db")
+    cursor = conn.cursor()
+    
+    cursor.execute(
+        "SELECT * FROM expenses WHERE category=?",
+        (category,)
+    )
+
+    expenses = cursor.fetchall()
+    conn.close()
+
+    return render_template(
+        "view_expenses.html",
+        expenses=expenses
+    )
 
     conn.close()
 
-    return render_template("view_expenses.html", expenses=expenses)
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    conn = sqlite3.connect("expense.db")
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM expenses WHERE id=?", (id,))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('view_expenses'))
 
 
 # ---------------- INIT DB ----------------
