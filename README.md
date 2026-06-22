@@ -79,5 +79,5 @@ Enter Amount: 250
 
 ---
 
-** ## 👨‍💻 Author **
+## 👨‍💻 Author 
 Saraswathi I
